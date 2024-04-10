@@ -1,5 +1,6 @@
 const express = require('express');
 const Proveedores = require('../models/Proveedores');
+const auth = require('../middleware/auth');
 const router = new express.Router();
 
 router.post('/proveedores', auth, async (req, res) => {
@@ -58,7 +59,7 @@ router.put('/proveedores/:id', auth ,async (req, res) => {
             return res.status(404).send('Proveedor  no encontrado');
         }
 
-        res.send(proveedor); // Devolver los proveedores actualizado 
+        return res.status(201).send(proveedor); // Devolver los proveedores actualizado 
     } catch (error) {
         console.error(error); // Imprimir cualquier error en la consola
         res.status(500).send('Error al actualizar la Proveedores'); // Devolver un mensaje de error en la respuesta

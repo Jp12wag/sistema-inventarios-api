@@ -1,16 +1,21 @@
 const mongoose = require('mongoose');
 
-const CategoriaSchema = new mongoose.Schema({
-    name: {
-        type: String,
+const EntradaStockSchema = new mongoose.Schema({
+    producto: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'productos',
         required: true
     },
-    descripcion: {
-        type: String,
+    cantidad: {
+        type: Number,
         required: true
+    },
+    fecha: {
+        type: Date,
+        default: Date.now
     }
 });
 
-const Categoria = mongoose.model('Categorias', CategoriaSchema);
+const EntradaStock = mongoose.model('EntradaStock', EntradaStockSchema);
 
-module.exports = Categoria;
+module.exports = EntradaStock;

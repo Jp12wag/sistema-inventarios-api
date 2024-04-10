@@ -69,7 +69,7 @@ router.put('/productos/:id', async (req, res) => {
             return res.status(404).send('Producto no encontrado');
         }
 
-        res.send(producto); // Devolver el producto actualizado en la respuesta
+     return res.status(201).send(producto); // Devolver el producto actualizado en la respuesta
     } catch (error) {
         console.error(error); // Imprimir cualquier error en la consola
         res.status(500).send('Error al actualizar el producto'); // Devolver un mensaje de error en la respuesta

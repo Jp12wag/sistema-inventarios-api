@@ -33,10 +33,10 @@ const userSchema = new mongoose.Schema({
         throw new Error('Email incorrecto!')
       }
     }
-  },roles:{
-    type:Number,
-    require
-
+  },
+  roles:{
+    type:String,
+    required:false
   },
   tokens: [{
     token: {

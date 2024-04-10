@@ -25,6 +25,16 @@ const ProductosSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    fechaE: {
+        type: Date,
+        require: false,
+      
+    },
+    fechaS: {
+        type: Date,
+        require: false,
+      
+    },
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         require: true,

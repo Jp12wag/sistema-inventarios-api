@@ -5,35 +5,12 @@ const RoleSchema = new mongoose.Schema({
       type: String,
       require: true,
       trim: true
-    }
+    } 
   })
-  
  
 
-
   
-  // middleware --> route ---> create user --> pre ---> save 
-  
-  userSchema.pre('save', async function(next) {
-    const user = this
-  
-    if(user.isModified('password')) {
-        user.password = await bcrypt.hash(user.password, 8) 
-    }
-  
-    next()
-  })
-  
-  RoleSchema.pre('remove', async function(next) {
-    const user = this
-  
-    await Task.deleteMany({ owner: user._id })
-  
-    next()
-  })
-  
-  
-  const Roles = mongoose.model('users', RoleSchema)
+  const Roles = mongoose.model('roles', RoleSchema)
   
   module.exports = Roles;
   
