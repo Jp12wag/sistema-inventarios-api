@@ -2,10 +2,11 @@ const express = require('express');
 const UserRoute = require('./routers/user');
 const ProductosRouter = require('./routers/Productos');
 const CategoriaRouter = require('./routers/Categorias');
-const RolesRouter = require('./routers/Roles.js');
+const RolesRouter = require('./routers/Roles');
 const ProveedorRouter = require('./routers/Proveedores');
-const UbicacionesRouter = require('./routers/Ubicaciones.js');
-const EntradaRoute= require('./routers/Entrada.js');
+const UbicacionesRouter = require('./routers/Ubicaciones');
+const EntradaRoute= require('./routers/Entrada');
+const SalidaRoute= require('./routers/Salida');
 const cors = require('cors');
 
 
@@ -27,6 +28,7 @@ app.use(CategoriaRouter);
 app.use(ProveedorRouter);
 app.use(UbicacionesRouter);
 app.use(EntradaRoute);
+app.use(SalidaRoute);
 
 
 //app.use(ProveedorRouter);

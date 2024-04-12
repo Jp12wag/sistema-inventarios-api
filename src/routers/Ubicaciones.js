@@ -51,12 +51,12 @@ router.delete('/Ubicaciones/:id', auth,async (req, res) => {
 
     try {
         // Buscar y eliminar el producto por su ID
-        const Ubicaciones = await Ubicaciones.findByIdAndDelete(id);
-        if (!Ubicaciones) {
+        const ubicaciones = await Ubicaciones.findByIdAndDelete(id);
+        if (!ubicaciones) {
             return res.status(404).send('Ubicaciones no encontrado');
         }
 
-        res.send(Ubicaciones); // Devolver el c eliminado en la respuesta
+        res.send(ubicaciones); // Devolver el c eliminado en la respuesta
     } catch (error) {
         console.error(error); // Imprimir cualquier error en la consola
         res.status(500).send('Error al eliminar Ubicaciones'); // Devolver un mensaje de error en la respuesta

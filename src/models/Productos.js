@@ -30,6 +30,12 @@ const ProductosSchema = new mongoose.Schema({
         require: false,
       
     },
+    
+    fechaUpdate: {
+        type: Date,
+        require: false,
+      
+    },
     fechaS: {
         type: Date,
         require: false,
@@ -39,6 +45,10 @@ const ProductosSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         require: true,
         ref: 'productos'
+    },
+    ubicacion:{
+        type: String,
+        require: false,
     }
 });
 

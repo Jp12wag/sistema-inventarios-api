@@ -13,6 +13,11 @@ const EntradaStockSchema = new mongoose.Schema({
     fecha: {
         type: Date,
         default: Date.now
+    },
+     ubicacion: {
+        type: String    ,
+        require: false,
+        ref: 'Ubicaciones'
     }
 });
 
