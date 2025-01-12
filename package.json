@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "db": "mongod"
+    "db": "mongod",
+    "dev":"nodemon src/index.js",
+    "start":"node src/index.js"
   },
   "keywords": [],
   "author": "Wagner Alcantara Fernandez",
