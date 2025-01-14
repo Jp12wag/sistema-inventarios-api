@@ -19,6 +19,10 @@ const SalidaStockSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    comentarios:{
+        type: String,
+        required: true
+    },
     precioDeVenta:{
         type: Number,
         required: true

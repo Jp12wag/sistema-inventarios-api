@@ -8,7 +8,7 @@ router.post('/productos', auth ,async (req, res) => {
         ...req.body,
         owner: req.user._id
     })
-    console.log(productoData);
+   
     try {
         await productoData.save();
 
@@ -35,6 +35,25 @@ router.get('/productos', auth ,  async (req, res) => {
         res.status(500).send('Error al obtener los productos'); // Devolver un mensaje de error en la respuesta
     }
 });
+
+// Ruta para obtener un producto por su ID
+router.get('/productos/:id', auth, async (req, res) => {
+    try {
+        const id = req.params.id;
+        // Buscar el producto por ID
+        const producto = await Productos.findById(id);
+        
+        if (!producto) {
+            return res.status(404).send('Producto no encontrado'); // Producto no encontrado
+        }
+
+        res.send(producto); // Devolver el producto encontrado en la respuesta
+    } catch (error) {
+        console.error(error); // Imprimir cualquier error en la consola
+        res.status(500).send('Error al obtener el producto'); // Devolver un mensaje de error en la respuesta
+    }
+});
+
 
 
 

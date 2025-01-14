@@ -20,7 +20,7 @@ router.post('/salidas', auth, async (req, res) => {
 });
 
 // Obtener todas las salidas de stock
-router.get('/salidas', auth, async (req, res) => {
+router.get('/', auth, async (req, res) => {
     try {
         const salidas = await Salidas.find();
         res.send(salidas);
@@ -43,6 +43,24 @@ router.get('/salidas/:id', auth, async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).send('Error al obtener la salida de stock');
+    }
+});
+
+router.get('/salidas', async (req, res) => {
+    const { fechaInicio, fechaFin } = req.query;
+    const filtro = {};
+   
+
+    if (fechaInicio && fechaFin) {
+        filtro.fecha = { $gte: new Date(fechaInicio), $lte: new Date(fechaFin) };
+    }
+
+    try {
+       
+        const salidas = await Salidas.find(filtro);
+        res.status(200).json(salidas);
+    } catch (error) {
+        res.status(500).json({ error: 'Error al obtener las salidas de stock', detalle: error.message });
     }
 });
 
